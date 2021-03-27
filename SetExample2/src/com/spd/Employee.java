@@ -4,7 +4,7 @@ package com.spd;
  * @author Satish Prasad
  *
  */
-public class Employee {
+public class Employee implements Comparable<Employee>{
 	private int employeeId;
 	private String firstName;
 	private double salary;
@@ -61,14 +61,19 @@ public class Employee {
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", salary=" + salary + "]";
 	}
-	
+	@Override
+	public int compareTo(Employee employee) {
+		
+		return this.getEmployeeId() - employee.getEmployeeId();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime=31;
-		int result=1;
+		int result = 1;
 		result = prime*result+employeeId;
 		
-		result = prime*result+((firstName == null) ? 0 : firstName.hashCode());
+		result = prime*result+((firstName == null) ? 0: firstName.hashCode());
 		return result;
 	}
 	
@@ -81,12 +86,13 @@ public class Employee {
 		if(getClass() != obj.getClass())
 			return false;
 		Employee emp = (Employee)obj;
-		if(employeeId != emp.getEmployeeId())
+		if(employeeId != emp.employeeId)
 			return false;
 		if(firstName == null) {
-			if(emp.getFirstName() != null)
+			if(emp.firstName != null) {
 				return false;
-		}else if(!firstName.equals(emp.getFirstName()))
+			}
+		}else if(!firstName.equals(emp.firstName))
 			return false;
 		return true;
 	}
