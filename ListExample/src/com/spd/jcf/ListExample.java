@@ -2,6 +2,7 @@ package com.spd.jcf;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -29,11 +30,31 @@ public class ListExample {
 	private static void printElements(List<String> strList) {
 		//Basic for loop
 		for(int i=0; i<strList.size(); i++) {
-			strList.add(new String("Test"));
+			//strList.add(new String("Test"));
 			System.out.println(strList.get(i));
 		}
+		
+		/*
+		 * Iterator's and Enhanced for Loop provides fail-fast behavior, rather non-deterministic behavior in the face of concurrent modifaction during iteration
+		 * */
+		System.out.println();
+		System.out.println("==========Loop using iterator=========");
+		//Loop using iterator
+		Iterator<String> itr = strList.iterator();
+		//strList.add(new String("Test"))
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		
+		System.out.println();
+		System.out.println("==========Enhanced for Loop=========");
+		//Enhanced for Loop
+		for(String str: strList) {
+			System.out.println(str);
+		}
 	}
-
+	
+	
 	/**
 	 * Method to add elements into an java.util.List
 	 * @param strList
