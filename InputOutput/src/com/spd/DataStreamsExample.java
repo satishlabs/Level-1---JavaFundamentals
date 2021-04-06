@@ -14,6 +14,9 @@ import java.io.IOException;
  * primitive data types.
  */
 public class DataStreamsExample {
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		FileOutputStream fout = null;
 		try {
@@ -44,7 +47,7 @@ public class DataStreamsExample {
 			DataInputStream dataIn = new DataInputStream(fin);
 			
 			System.out.println(dataIn.readInt());//read 4 bytes
-			System.out.println(dataIn.readChar()); //read 2 bytes
+			System.out.println(dataIn.readChar()); //read 2 bytes(unicode)
 			System.out.println(dataIn.readDouble()); //read 8 bytes
 		}catch (IOException e) {
 			e.printStackTrace();
